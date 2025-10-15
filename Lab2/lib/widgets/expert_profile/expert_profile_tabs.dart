@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'expert_info_tab_content.dart';
+import 'tabs/expert_info_tab_content.dart';
 
 class ExpertProfileTabs extends StatefulWidget {
   const ExpertProfileTabs({super.key});

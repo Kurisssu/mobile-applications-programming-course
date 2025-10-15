@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import '../../screens/expert_profile_screen.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'top_expert_data.dart';
 
 class TopExpertCard extends StatelessWidget {
-  const TopExpertCard({super.key});
+  final TopExpert expert;
+  final VoidCallback? onTap;
+
+  const TopExpertCard({
+    super.key,
+    required this.expert,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -52,14 +59,7 @@ class TopExpertCard extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const HomeScreen(),
-                ),
-              );
-            },
+            onTap: onTap,
             child: Container(
               width: 375,
               height: 90,
@@ -73,9 +73,9 @@ class TopExpertCard extends StatelessWidget {
                 children: [
                   Stack(
                     children: [
-                      const CircleAvatar(
+                      CircleAvatar(
                         radius: 30,
-                        backgroundImage: AssetImage('assets/images/top_expert.png'),
+                        backgroundImage: AssetImage(expert.imagePath),
                       ),
                       Positioned(
                         bottom: 0,
@@ -83,14 +83,12 @@ class TopExpertCard extends StatelessWidget {
                         child: Container(
                           width: 22,
                           height: 24,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Colors.white,
                             shape: BoxShape.circle,
                           ),
                           padding: const EdgeInsets.all(4),
-                          child: SvgPicture.asset(
-                            'assets/icons/top_expert.svg',
-                          ),
+                          child: SvgPicture.asset(expert.badgeIconPath),
                         ),
                       ),
                     ],
@@ -100,19 +98,19 @@ class TopExpertCard extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         Text(
-                          'Dr. Emma Kathrin',
-                          style: TextStyle(
+                          expert.name,
+                          style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w600,
                             color: Colors.black87,
                           ),
                         ),
-                        SizedBox(height: 4),
+                        const SizedBox(height: 4),
                         Text(
-                          'Cardiologist',
-                          style: TextStyle(
+                          expert.specialty,
+                          style: const TextStyle(
                             fontSize: 13,
                             fontWeight: FontWeight.w600,
                             color: Color(0xFF4C9F9F),

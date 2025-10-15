@@ -7,7 +7,7 @@ class ExpertMap extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final clinicLocation = LatLng(23.8103, 90.4125);
+    final clinicLocation = LatLng(47.06274394139048, 28.86824387123338);
 
     return Container(
       height: 200,

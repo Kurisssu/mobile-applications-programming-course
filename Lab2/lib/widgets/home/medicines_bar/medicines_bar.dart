@@ -1,30 +1,21 @@
 import 'package:flutter/material.dart';
+import 'medicine_card.dart';
+import 'medicines_data.dart';
 
-class FeaturedServices extends StatelessWidget {
-  const FeaturedServices({super.key});
+class MedicinesBar extends StatelessWidget {
+  const MedicinesBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final List<String> images = [
-      'assets/images/services/services_1.png',
-      'assets/images/services/services_2.png',
-      'assets/images/services/services_3.png',
-    ];
-
-    const double itemWidth = 180;
-    const double itemHeight = 200;
-    const double itemSpacing = 17;
-
     return Padding(
-      padding: const EdgeInsets.only(left: 15, top: 15, bottom: 15),
+      padding: const EdgeInsets.only(left: 15, top: 20),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Text(
-                'Featured Services',
+                'Medicines',
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w700,
@@ -60,26 +51,18 @@ class FeaturedServices extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           SizedBox(
-            height: itemHeight,
+            height: 242,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
-              itemCount: images.length,
-              separatorBuilder: (context, index) => const SizedBox(width: itemSpacing),
+              itemCount: medicines.length,
+              separatorBuilder: (context, index) => const SizedBox(width: 12),
               itemBuilder: (context, index) {
-                final img = images[index];
-                return ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: Container(
-                    width: itemWidth,
-                    height: itemHeight,
-                    color: Colors.grey.shade200,
-                    child: Image.asset(
-                      img,
-                      width: itemWidth,
-                      height: itemHeight,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
+                final ms = medicines[index];
+                return MedicineCard(
+                  imagePath: ms.image,
+                  title: ms.title,
+                  subtitle: ms.name,
+                  price: ms.price,
                 );
               },
             ),

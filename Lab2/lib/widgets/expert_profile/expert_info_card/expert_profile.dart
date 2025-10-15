@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/material.dart' hide VerticalDivider;
+import 'expert_info_card.dart';
+import 'vertical_divider.dart';
 
 class ExpertProfile extends StatelessWidget {
   const ExpertProfile({super.key});
@@ -7,7 +8,7 @@ class ExpertProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 15.0, right: 15, top: 15),
+      padding: const EdgeInsets.only(left: 15, right: 15, top: 15),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -52,32 +53,30 @@ class ExpertProfile extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 20),
-
-          /// Row cu info, aliniate la stânga
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
               SizedBox(width: 15),
               Expanded(
-                child: _InfoCard(
+                child: ExpertInfoCard(
                   iconPath: "assets/icons/star_full.svg",
                   value: "4.3",
                   label: "Rating & Review",
                 ),
               ),
-              _VerticalDivider(),
+              VerticalDivider(),
               SizedBox(width: 15),
               Expanded(
-                child: _InfoCard(
+                child: ExpertInfoCard(
                   iconPath: "assets/icons/case.svg",
                   value: "14",
                   label: "Years of work",
                 ),
               ),
-              _VerticalDivider(),
+              VerticalDivider(),
               SizedBox(width: 15),
               Expanded(
-                child: _InfoCard(
+                child: ExpertInfoCard(
                   iconPath: "assets/icons/people.svg",
                   value: "125",
                   label: "No. of patients",
@@ -87,68 +86,6 @@ class ExpertProfile extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-/// Widget pentru fiecare secțiune (SVG + valoare)
-class _InfoCard extends StatelessWidget {
-  final String iconPath;
-  final String value;
-  final String label;
-
-  const _InfoCard({
-    required this.iconPath,
-    required this.value,
-    required this.label,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SvgPicture.asset(
-              iconPath,
-              height: 20,
-              width: 20,
-            ),
-            const SizedBox(width: 6),
-            Text(
-              value,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 4),
-        Text(
-          label,
-          textAlign: TextAlign.start,
-          style: const TextStyle(
-            fontSize: 12,
-            color: Colors.grey,
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class _VerticalDivider extends StatelessWidget {
-  const _VerticalDivider();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 40,
-      width: 1,
-      color: Colors.grey.shade300,
     );
   }
 }

@@ -23,12 +23,12 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const HomeSearchBar(),
-            const CompartmentsInfo(),
-            const RelevantSpecialitiesBar(),
-            const SpecialistsBar(),
-            const MedicinesBar(),
-            const FeaturedServices(),
+            HomeSearchBar(),
+            CompartmentsInfo(),
+            RelevantSpecialitiesBar(),
+            SpecialistsBar(),
+            MedicinesBar(),
+            FeaturedServices(),
             TopExpertCard(
               expert: topExpert,
               onTap: () {
@@ -38,7 +38,7 @@ class HomeScreen extends StatelessWidget {
                 );
               },
             ),
-            const TopExpertsBySpecialityBar(),
+            TopExpertsBySpecialityBar(),
           ],
         ),
       ),

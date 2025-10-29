@@ -35,7 +35,7 @@ PreferredSize navBarExpertProfile({
                   color: Colors.black87,
                 ),
                 onPressed: () {
-                  Navigator.pushReplacement(
+                  Navigator.pop(
                     context,
                     MaterialPageRoute(
                       builder: (context) => const HomeScreen(),
